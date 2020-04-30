@@ -1,1 +1,7 @@
-img {}
+img:hover {
+    fill: red;
+}
+
+img {
+    background: none;
+}

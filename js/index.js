@@ -5,7 +5,7 @@ function loadFiles() {
         url: folder,
         success: function (data) {
             $(data).find("a").attr("href", function (i, val) {
-                if (val.match(/\.(jpe?g|png|gif)$/)) {
+                if (val.match(/\.(png)$/)) {
                     if (row % 3 == 0) {
                         row = 0;
                     }
@@ -18,8 +18,4 @@ function loadFiles() {
             });
         }
     });
-}
-
-function adjustImage() {
-
 }
