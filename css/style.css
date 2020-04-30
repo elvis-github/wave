@@ -6,3 +6,8 @@ img {
     opacity: 0.5;
     transition: opacity 1s;
 }
+
+.slidecontainer {
+    visibility: hidden;
+    transition: hidden 1s;
+}
