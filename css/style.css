@@ -1,7 +1,8 @@
 img:hover {
-    fill: red;
+    opacity: 1;
 }
 
 img {
-    background: none;
+    opacity: 0.5;
+    transition: opacity 1s;
 }
