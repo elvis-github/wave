@@ -32,7 +32,9 @@ function loadFiles() {
 					$('div')
 						.last()
 						.append(
-							"<div class='slidecontainer d-flex justify-content-center'><input type='range' min='1' max='100' value='50' class='slider'></div></div>"
+							"<div class='slidecontainer d-flex justify-content-center'><input type='range' min='1' max='100' value='50' class='slider' id='" +
+								val.replace('.png', '') +
+								"Toggle'></div></div>"
 						);
 				}
 			});
@@ -41,7 +43,9 @@ function loadFiles() {
 			loadHowls();
 			$('img').click(function() {
 				var soundId = $(this).attr('id');
-				console.log(howlsArray[soundId]);
+				var soundToggle = soundId + 'Toggle';
+				console.log(soundToggle);
+				$('#' + soundToggle).toggleClass('visible');
 				if (howlsArray[soundId].playing()) {
 					howlsArray[soundId].stop();
 				} else {
