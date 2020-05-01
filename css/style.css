@@ -25,3 +25,7 @@ footer {
 body {
     overflow: hidden;
 }
+
+svg {
+    fill: white !important;
+}
