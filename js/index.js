@@ -1,3 +1,5 @@
+var fileNames = [];
+
 function loadFiles() {
 	var folder = 'static/images';
 	var row = 0;
@@ -15,6 +17,7 @@ function loadFiles() {
 					row++;
 					$('.row').last().append("<div class='col-4'>");
 					$('div').last().append("<img src='" + val + "' class='p-4 img-fluid'>");
+					fileNames.push(val.replace('/' + folder + '/', '').split('.').slice(0, -1).join('.'));
 					$('div')
 						.last()
 						.append(
