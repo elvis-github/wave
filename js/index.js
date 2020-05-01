@@ -7,7 +7,6 @@ function loadFiles() {
 		url: folder,
 		success: function(data) {
 			$(data).find('a').attr('href', function(i, val) {
-				console.log(val);
 				if (val.match(/\.(png)$/)) {
 					if (row % 3 == 0) {
 						row = 0;
@@ -32,7 +31,7 @@ function loadFiles() {
 					$('div')
 						.last()
 						.append(
-							"<div class='slidecontainer d-flex justify-content-center'><input type='range' min='1' max='100' value='50' class='slider' id='" +
+							"<div class='slidecontainer d-flex justify-content-center'><input type='range' min='0.0' max='1.0' value='0.5' step='0.10' class='slider' id='" +
 								val.replace('.png', '') +
 								"Toggle'></div></div>"
 						);
@@ -44,13 +43,17 @@ function loadFiles() {
 			$('img').click(function() {
 				var soundId = $(this).attr('id');
 				var soundToggle = soundId + 'Toggle';
-				console.log(soundToggle);
-				$('#' + soundToggle).toggleClass('visible');
 				if (howlsArray[soundId].playing()) {
 					howlsArray[soundId].stop();
 				} else {
 					howlsArray[soundId].play();
 				}
+				$('#' + soundToggle).toggleClass('visible');
+			});
+			$('input').on('change', function() {
+				var soundId = $(this).attr('id');
+				soundId = soundId.replace('Toggle', '');
+				howlsArray[soundId].volume($(this).val());
 			});
 		}
 	});
@@ -61,7 +64,8 @@ function loadHowls() {
 		srcStr = 'static/sounds/' + fileNames[i] + '.wav';
 		var sound = new Howl({
 			src: srcStr,
-			loop: true
+			loop: true,
+			volume: 0.5
 		});
 		howlsArray[fileNames[i]] = sound;
 	}
