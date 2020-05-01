@@ -16,3 +16,12 @@ div input {
     opacity: 100;
     transition: opacity 1s;
 }
+
+footer {
+    position: absolute;
+    bottom: 0;
+}
+
+body {
+    overflow: hidden;
+}
