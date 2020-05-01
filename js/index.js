@@ -42,7 +42,11 @@ function loadFiles() {
 			$('img').click(function() {
 				var soundId = $(this).attr('id');
 				console.log(howlsArray[soundId]);
-				howlsArray[soundId].play();
+				if (howlsArray[soundId].playing()) {
+					howlsArray[soundId].stop();
+				} else {
+					howlsArray[soundId].play();
+				}
 			});
 		}
 	});
