@@ -60,12 +60,14 @@ function loadFiles() {
 				}
 
 			});
-			$('input').on('input', function () {
+			$('.slidercontainer input').on('input', function () {
 				var soundId = $(this).attr('id');
 				soundId = soundId.replace('Toggle', '');
 				howlsArray[soundId].volume($(this).val());
 			});
-
+			$('#master-slider').on('input', function () {
+				Howler.volume($(this).val());
+			});
 			pomodoro.init();
 		}
 	});
@@ -86,7 +88,6 @@ function loadHowls() {
 		loop: true,
 		volume: 1.0
 	});
-
 }
 
 /*
