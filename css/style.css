@@ -6,7 +6,8 @@ i:hover {
 img,
 i {
     opacity: 0.5;
-    transition: opacity 1s;
+    transition: all 1s ease;
+    -webkit-transition: all 1s ease;
     height: auto;
     max-width: 100%;
 }
