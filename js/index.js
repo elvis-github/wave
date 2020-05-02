@@ -97,6 +97,7 @@ function loadHowls() {
 var pomodoro = {
 	started: false,
 	paused: false,
+	muted: false,
 	minutes: 0,
 	seconds: 0,
 	fillerHeight: 0,
@@ -126,6 +127,9 @@ var pomodoro = {
 		document.querySelector('#pause').onclick = function () {
 			self.pauseTimer.apply(self);
 		};
+		document.querySelector('#mute').onclick = function () {
+			self.muteSounds.apply(self);
+		}
 	},
 	resetVariables: function (mins, secs, started) {
 		this.minutes = mins;
@@ -162,6 +166,11 @@ var pomodoro = {
 	},
 	resumeTimer: function () {
 		this.resetVariables(this.minutes, this.seconds, true);
+	},
+	muteSounds: function () {
+		this.muted = (this.muted) ? false : true;
+		Howler.mute(this.muted);
+		$('#mute').toggleClass('muted');
 	},
 	toDoubleDigit: function (num) {
 		if (num < 10) {
