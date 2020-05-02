@@ -1,5 +1,8 @@
 var fileNames = [];
 var howlsArray = {};
+var alertSound;
+
+
 
 function loadFiles() {
 	var folder = 'static/images/';
@@ -64,6 +67,8 @@ function loadFiles() {
 				soundId = soundId.replace('Toggle', '');
 				howlsArray[soundId].volume($(this).val());
 			});
+
+			pomodoro.init();
 		}
 	});
 }
@@ -78,8 +83,18 @@ function loadHowls() {
 		});
 		howlsArray[fileNames[i]] = sound;
 	}
+	alertSound = new Howl({
+		src: ['static/sounds/alert.wav'],
+		loop: true,
+		volume: 1.0
+	});
+
 }
 
+/*
+ * Pomodoro modified from Raj Gupta 
+ * https://codepen.io/rajdgreat007/pen/ZpZWbw
+ */
 var pomodoro = {
 	started: false,
 	minutes: 0,
@@ -88,8 +103,9 @@ var pomodoro = {
 	fillerIncrement: 0,
 	interval: null,
 	minutesDom: null,
-	secondsDom: null
+	secondsDom: null,
 	init: function () {
+
 		var self = this;
 		this.minutesDom = document.querySelector('#minutes');
 		this.secondsDom = document.querySelector('#seconds');
@@ -124,6 +140,9 @@ var pomodoro = {
 		this.resetVariables(15, 0, true);
 	},
 	stopTimer: function () {
+		if (alertSound.playing()) {
+			alertSound.stop();
+		}
 		this.resetVariables(25, 0, false);
 		this.updateDom();
 	},
@@ -153,5 +172,6 @@ var pomodoro = {
 	},
 	timerComplete: function () {
 		this.started = false;
+		alertSound.play();
 	}
 };
