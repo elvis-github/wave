@@ -46,8 +46,12 @@ function loadFiles() {
 				var soundToggle = soundId + 'Toggle';
 				if (howlsArray[soundId].playing()) {
 					howlsArray[soundId].stop();
-					$('#' + soundToggle).toggleClass('visible');
-					$(this).toggleClass('visible');
+					if ($('#' + soundToggle).hasClass('visible')) {
+						$('#' + soundToggle).toggleClass('visible');
+					}
+					if ($(this).hasClass('visible')) {
+						$(this).toggleClass('visible');
+					}
 				} else {
 					howlsArray[soundId].play();
 					$('#' + soundToggle).toggleClass('visible');
