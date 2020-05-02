@@ -13,7 +13,7 @@ function loadFiles() {
 						row = 0;
 					}
 					if (row == 0) {
-						$('#main').append($("<div class='row'></div>"));
+						$('#main').append($("<div class='row mb-3'></div>"));
 					}
 					row++;
 					$('.row').last().append("<div class='col-4'>");
@@ -23,7 +23,7 @@ function loadFiles() {
 							"<img src='" +
 							folder +
 							val +
-							"' class='p-3 p-lg-5 img-fluid' id='" +
+							"' class='mb-2 mx-auto d-block' id='" +
 							val.replace('.png', '') +
 							"'>"
 						);
@@ -46,10 +46,14 @@ function loadFiles() {
 				var soundToggle = soundId + 'Toggle';
 				if (howlsArray[soundId].playing()) {
 					howlsArray[soundId].stop();
+					$('#' + soundToggle).toggleClass('visible');
+					$(this).toggleClass('visible');
 				} else {
 					howlsArray[soundId].play();
+					$('#' + soundToggle).toggleClass('visible');
+					$(this).toggleClass('visible');
 				}
-				$('#' + soundToggle).toggleClass('visible');
+
 			});
 			$('input').on('change', function () {
 				var soundId = $(this).attr('id');
