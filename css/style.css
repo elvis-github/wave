@@ -59,21 +59,6 @@ footer p {
     font-family: Raleway;
 }
 
-* {
-    box-sizing: border-box;
-}
-
-*:before,
-*:after {
-    box-sizing: border-box;
-}
-
-html,
-body {
-    height: 100%;
-    position: relative;
-}
-
 #main-container {
     min-height: 70vh;
     /* will cover the 100% of viewport */
