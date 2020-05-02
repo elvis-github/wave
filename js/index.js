@@ -1,6 +1,9 @@
 var fileNames = [];
 var howlsArray = {};
-
+/*
+ * Pomodoro modified from Raj Gupta 
+ * https://codepen.io/rajdgreat007/pen/ZpZWbw
+ */
 var pomodoro = {
 	started: false,
 	minutes: 0,
