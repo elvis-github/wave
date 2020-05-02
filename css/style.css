@@ -28,3 +28,23 @@ div input {
 svg {
     fill: white !important;
 }
+
+.slider {
+    -webkit-appearance: none;
+    height: 5px;
+    background: #d3d3d3;
+    outline: none;
+    -webkit-transition: 1s;
+    margin-top: 1.5rem;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: black;
+    cursor: pointer;
+
+}
