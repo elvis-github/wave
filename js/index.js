@@ -2,8 +2,6 @@ var fileNames = [];
 var howlsArray = {};
 var alertSound;
 
-
-
 function loadFiles() {
 	var folder = 'static/images/';
 	var row = 0;
