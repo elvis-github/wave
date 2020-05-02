@@ -153,7 +153,11 @@ var pomodoro = {
 	updateDom: function () {
 		this.minutesDom.innerHTML = this.toDoubleDigit(this.minutes);
 		this.secondsDom.innerHTML = this.toDoubleDigit(this.seconds);
-		window.document.title = "WAVE " + this.toDoubleDigit(this.minutes) + ":" + this.toDoubleDigit(this.seconds);
+		if (this.started) {
+			window.document.title = "WAVE " + this.toDoubleDigit(this.minutes) + ":" + this.toDoubleDigit(this.seconds);
+		} else {
+			window.document.title = "WAVE";
+		}
 	},
 	intervalCallback: function () {
 		if (!this.started) return false;
@@ -171,7 +175,6 @@ var pomodoro = {
 	},
 	timerComplete: function () {
 		this.started = false;
-		window.document.title = "WAVE"
 		alertSound.play();
 	}
 };
