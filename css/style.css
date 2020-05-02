@@ -56,6 +56,10 @@ svg {
     cursor: pointer;
 }
 
+#master-slider {
+    width: 40%;
+}
+
 #brand,
 #time span {
     font-family: Quicksand;
