@@ -47,9 +47,11 @@ function loadFiles() {
 				if (howlsArray[soundId].playing()) {
 					howlsArray[soundId].stop();
 					$('#' + soundToggle).toggleClass('visible');
+					$(this).toggleClass('visible');
 				} else {
 					howlsArray[soundId].play();
 					$('#' + soundToggle).toggleClass('visible');
+					$(this).toggleClass('visible');
 				}
 
 			});
