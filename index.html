@@ -18,6 +18,7 @@
 </head>
 
 <body>
+
     <div class="container-fluid bg-dark">
         <svg class="d-block m-auto py-3" height="100pt" viewBox="0 0 384 384" width="100pt"
             xmlns="http://www.w3.org/2000/svg">
@@ -41,6 +42,26 @@
                 d="m192 48c8.832031 0 16-7.167969 16-16v-16c0-8.832031-7.167969-16-16-16s-16 7.167969-16 16v16c0 8.832031 7.167969 16 16 16zm0 0" />
         </svg>
     </div>
+
+    <div id="pomodoro-app">
+        <div id="container" class="text-center">
+          <div id="timer">
+            <div id="time">
+              <span id="minutes">25</span>
+              <span id="colon">:</span>
+              <span id="seconds">00</span>
+            </div>
+          </div>
+      
+          <div id="buttons">
+            <button id="work">Work</button>
+            <button id="shortBreak">Short Break</button>
+            <button id="longBreak">Long Break</button>
+            <button id="stop">Stop</button>
+          </div>
+        </div>
+      </div>
+
     <div class="container pb-2 mt-3 mb-5 container-fluid" id="main">
         <script>
             loadFiles();
