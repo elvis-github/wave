@@ -6,9 +6,16 @@ i:hover {
 img,
 i {
     opacity: 0.5;
-    transition: opacity 1s;
     height: auto;
     max-width: 100%;
+}
+
+#buttons i,
+img {
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
 }
 
 @media (min-width: 768px) {
@@ -19,12 +26,11 @@ i {
 
 div input {
     opacity: 0;
-    transition: opacity 0.5s;
+    transition: all 0.5s ease;
 }
 
 .visible {
     opacity: 100;
-    transition: opacity 1s;
 }
 
 svg {
