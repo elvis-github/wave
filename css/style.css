@@ -1,8 +1,10 @@
-img:hover {
+img:hover,
+i:hover {
     opacity: 1;
 }
 
-img {
+img,
+i {
     opacity: 0.5;
     transition: opacity 1s;
     height: auto;
@@ -46,5 +48,13 @@ svg {
     border-radius: 50%;
     background: black;
     cursor: pointer;
+}
 
+#brand,
+#time span {
+    font-family: Quicksand;
+}
+
+footer p {
+    font-family: Raleway;
 }
