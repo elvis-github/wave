@@ -9,11 +9,13 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="icon" href="favicon.png" type="image/x-icon">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Raleway:wght@300&display=swap" rel="stylesheet">
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="js/index.js" aynsc></script>
     <script src="js/howler.core.js"></script>
-   
+    <script src="https://kit.fontawesome.com/93ba952c62.js" crossorigin="anonymous"></script>
+    
     <title>WAVE</title>
 </head>
 
@@ -45,7 +47,7 @@
     <div class="collapse" id="pomodoro-app">
         <div id="container" class="text-center">
           <div id="timer">
-            <div id="time">
+            <div class="h4 mb-0" id="time">
               <span id="minutes">25</span>
               <span id="colon">:</span>
               <span id="seconds">00</span>
@@ -53,10 +55,11 @@
           </div>
       
           <div id="buttons">
-            <button id="work">Work</button>
-            <button id="shortBreak">Short Break</button>
-            <button id="longBreak">Long Break</button>
-            <button id="stop">Stop</button>
+            
+            <i id="work" class="btn fas fa-play"/></i>
+            <i id="shortBreak" class="btn fas fa-mug-hot"></i>
+            <i id="longBreak" class="btn fas fa-coffee"></i>
+            <i id="stop" class="btn fas fa-stop"></i>
           </div>
         </div>
     </div>
@@ -68,7 +71,7 @@
     </div>
 
     <footer class="bg-dark navbar fixed-bottom container-fluid">
-        <p class="text-light d-block mx-auto text-center">WAVE v1.0.2<br>Created by Elvis Bui for Sarah Smith<br>
+        <p class="text-light d-block mx-auto text-center"><span id="brand">WAVE v1.0.2</span><br>Created by Elvis Bui for Sarah Smith<br>
             Images from flaticon.com | Sounds from freesounds.org</p>
     </footer>
 
