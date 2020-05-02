@@ -5,6 +5,14 @@ img:hover {
 img {
     opacity: 0.5;
     transition: opacity 1s;
+    height: auto;
+    max-width: 100%;
+}
+
+@media (min-width: 992px) {
+    img {
+        width: 60%;
+    }
 }
 
 div input {
@@ -15,15 +23,6 @@ div input {
 .visible {
     opacity: 100;
     transition: opacity 1s;
-}
-
-footer {
-    position: absolute;
-    bottom: 0;
-}
-
-body {
-    overflow: hidden;
 }
 
 svg {
