@@ -33,6 +33,12 @@ div input {
     opacity: 100;
 }
 
+.muted,
+#mute:hover {
+    opacity: 100;
+    color: red;
+}
+
 svg {
     fill: white !important;
 }
