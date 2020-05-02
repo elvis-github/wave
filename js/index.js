@@ -60,7 +60,7 @@ function loadFiles() {
 				}
 
 			});
-			$('input').on('change', function () {
+			$('input').on('input', function () {
 				var soundId = $(this).attr('id');
 				soundId = soundId.replace('Toggle', '');
 				howlsArray[soundId].volume($(this).val());
