@@ -75,16 +75,11 @@
             </div>
         </div>
 
-        <div id="container master-volume">
-
-        </div>
-
         <div class="container h-auto pb-2 my-5" id="main">
             <script>
-                var fileNamesTest = <?php echo json_encode($out)?>;
-                loadFiles();
+                var fileArr = <?php echo json_encode($out)?>;
+                loadFiles(fileArr);
             </script>
-            
         </div>
     </div>
     <footer class="bg-dark navbar container-fluid">

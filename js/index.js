@@ -2,75 +2,53 @@ var fileNames = [];
 var howlsArray = {};
 var alertSound;
 
-function loadFiles() {
+function loadFiles(filesArr) {
 	var folder = 'static/images/';
 	var row = 0;
-	$.ajax({
-		url: folder,
-		success: function (data) {
-			$(data).find('a').attr('href', function (i, val) {
-				if (val.match(/\.(png)$/)) {
-					if (row % 3 == 0) {
-						row = 0;
-					}
-					if (row == 0) {
-						$('#main').append($("<div class='row mb-3'></div>"));
-					}
-					row++;
-					$('.row').last().append("<div class='col-4'>");
-					$('div')
-						.last()
-						.append(
-							"<img src='" +
-							folder +
-							val +
-							"' class='mb-2 mx-auto d-block' id='" +
-							val.replace('.png', '') +
-							"'>"
-						);
-
-					fileNames.push(val.replace('/' + folder + '/', '').split('.').slice(0, -1).join('.'));
-					$('div')
-						.last()
-						.append(
-							"<div class='slidecontainer d-flex justify-content-center'><input type='range' min='0.0' max='1.0' value='0.5' step='0.10' class='slider' id='" +
-							val.replace('.png', '') +
-							"Toggle'></div></div>"
-						);
-				}
-			});
-		},
-		complete: function () {
-			loadHowls();
-			$('img').click(function () {
-				var soundId = $(this).attr('id');
-				var soundToggle = soundId + 'Toggle';
-				if (howlsArray[soundId].playing()) {
-					howlsArray[soundId].stop();
-					if ($('#' + soundToggle).hasClass('visible')) {
-						$('#' + soundToggle).toggleClass('visible');
-					}
-					if ($(this).hasClass('visible')) {
-						$(this).toggleClass('visible');
-					}
-				} else {
-					howlsArray[soundId].play();
-					$('#' + soundToggle).toggleClass('visible');
-					$(this).toggleClass('visible');
-				}
-
-			});
-			$('.slidecontainer input').on('input', function () {
-				var soundId = $(this).attr('id');
-				soundId = soundId.replace('Toggle', '');
-				howlsArray[soundId].volume($(this).val());
-			});
-			$('#master-slider').on('input', function () {
-				Howler.volume($(this).val());
-			});
-			pomodoro.init();
+	for (var i = 0; i < filesArr.length; i++) {
+		var val = filesArr[i];
+		if (row % 3 == 0) {
+			row = 0;
 		}
+		if (row == 0) {
+			$('#main').append($("<div class='row mb-3'></div>"));
+		}
+		row++;
+		$('.row').last().append("<div class='col-4'>");
+		$('div').last().append("<img src='" + folder + val + "' class='mb-2 mx-auto d-block' id='" + val.replace('.png', '') + "'>");
+		fileNames.push(val.replace('/' + folder + '/', '').split('.').slice(0, -1).join('.'));
+		$('div').last().append("<div class='slidecontainer d-flex justify-content-center'><input type='range' min='0.0' max='1.0' value='0.5' step='0.10' class='slider' id='" + val.replace('.png', '') + "Toggle'></div></div>");
+	};
+
+	loadHowls();
+	$('img').click(function () {
+		var soundId = $(this).attr('id');
+		var soundToggle = soundId + 'Toggle';
+		if (howlsArray[soundId].playing()) {
+			howlsArray[soundId].stop();
+			if ($('#' + soundToggle).hasClass('visible')) {
+				$('#' + soundToggle).toggleClass('visible');
+			}
+			if ($(this).hasClass('visible')) {
+				$(this).toggleClass('visible');
+			}
+		} else {
+			howlsArray[soundId].play();
+			$('#' + soundToggle).toggleClass('visible');
+			$(this).toggleClass('visible');
+		}
+
 	});
+	$('.slidecontainer input').on('input', function () {
+		var soundId = $(this).attr('id');
+		soundId = soundId.replace('Toggle', '');
+		howlsArray[soundId].volume($(this).val());
+	});
+	$('#master-slider').on('input', function () {
+		Howler.volume($(this).val());
+	});
+	pomodoro.init();
+
 }
 
 function loadHowls() {
