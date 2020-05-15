@@ -17,11 +17,16 @@
     <script src="js/index.js" aynsc></script>
     <script src="js/howler.core.js"></script>
     <script src="https://kit.fontawesome.com/93ba952c62.js" crossorigin="anonymous"></script>
-
+    
     <title>WAVE</title>
 </head>
 
 <body>
+    <?php
+        $out = scandir('static\images');
+        unset($out[0], $out[1]);
+        $out = array_values($out);
+    ?>
     <div id="main-container" class="d-flex flex-column">
         <div class="container-fluid bg-dark">
             <svg data-toggle="collapse" data-target="#pomodoro-app" class="d-block m-auto py-3" height="100pt"
@@ -76,8 +81,10 @@
 
         <div class="container h-auto pb-2 my-5" id="main">
             <script>
+                var fileNamesTest = <?php echo json_encode($out)?>;
                 loadFiles();
             </script>
+            
         </div>
     </div>
     <footer class="bg-dark navbar container-fluid">
