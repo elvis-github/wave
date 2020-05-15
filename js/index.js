@@ -139,20 +139,26 @@ var pomodoro = {
 		document.querySelector('#pause').classList.remove('visible');
 	},
 	startWork: function () {
+		this.stopAlertSound();
 		this.resetVariables(25, 0, true);
 	},
 	startShortBreak: function () {
+		this.stopAlertSound();
 		this.resetVariables(5, 0, true);
 	},
 	startLongBreak: function () {
+		this.stopAlertSound();
 		this.resetVariables(15, 0, true);
 	},
 	stopTimer: function () {
+		this.stopAlertSound();
+		this.resetVariables(25, 0, false);
+		this.updateDom();
+	},
+	stopAlertSound: function () {
 		if (alertSound.playing()) {
 			alertSound.stop();
 		}
-		this.resetVariables(25, 0, false);
-		this.updateDom();
 	},
 	pauseTimer: function () {
 		if (this.started) {
