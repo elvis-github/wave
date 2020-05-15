@@ -17,11 +17,16 @@
     <script src="js/index.js" aynsc></script>
     <script src="js/howler.core.js"></script>
     <script src="https://kit.fontawesome.com/93ba952c62.js" crossorigin="anonymous"></script>
-
+    
     <title>WAVE</title>
 </head>
 
 <body>
+    <?php
+        $out = scandir('static/images');
+        unset($out[0], $out[1]);
+        $out = array_values($out);
+    ?>
     <div id="main-container" class="d-flex flex-column">
         <div class="container-fluid bg-dark">
             <svg data-toggle="collapse" data-target="#pomodoro-app" class="d-block m-auto py-3" height="100pt"
@@ -70,18 +75,15 @@
             </div>
         </div>
 
-        <div id="container master-volume">
-
-        </div>
-
         <div class="container h-auto pb-2 my-5" id="main">
             <script>
-                loadFiles();
+                var fileArr = <?php echo json_encode($out)?>;
+                loadFiles(fileArr);
             </script>
         </div>
     </div>
     <footer class="bg-dark navbar container-fluid">
-        <p class="text-light d-block mx-auto my-0 text-center"><span id="brand">WAVE v1.4.1</span><br>Created by Elvis
+        <p class="text-light d-block mx-auto my-0 text-center"><span id="brand">WAVE v1.4.2</span><br>Created by Elvis
             Bui for Sarah Smith<br>
             Images from flaticon.com | Sounds from freesounds.org</p>
     </footer>
