@@ -23,7 +23,7 @@
 
 <body>
     <?php
-        $out = scandir('static\images');
+        $out = scandir('static/images');
         unset($out[0], $out[1]);
         $out = array_values($out);
     ?>
@@ -83,7 +83,7 @@
         </div>
     </div>
     <footer class="bg-dark navbar container-fluid">
-        <p class="text-light d-block mx-auto my-0 text-center"><span id="brand">WAVE v1.4.1</span><br>Created by Elvis
+        <p class="text-light d-block mx-auto my-0 text-center"><span id="brand">WAVE v1.4.2</span><br>Created by Elvis
             Bui for Sarah Smith<br>
             Images from flaticon.com | Sounds from freesounds.org</p>
     </footer>

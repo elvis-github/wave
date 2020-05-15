@@ -15,13 +15,23 @@ function loadFiles(filesArr) {
 		}
 		row++;
 		$('.row').last().append("<div class='col-4'>");
-		$('div').last().append("<img src='" + folder + val + "' class='mb-2 mx-auto d-block' id='" + val.replace('.png', '') + "'>");
+		$('div')
+			.last()
+			.append(
+				"<img src='" + folder + val + "' class='mb-2 mx-auto d-block' id='" + val.replace('.png', '') + "'>"
+			);
 		fileNames.push(val.replace('/' + folder + '/', '').split('.').slice(0, -1).join('.'));
-		$('div').last().append("<div class='slidecontainer d-flex justify-content-center'><input type='range' min='0.0' max='1.0' value='0.5' step='0.10' class='slider' id='" + val.replace('.png', '') + "Toggle'></div></div>");
-	};
+		$('div')
+			.last()
+			.append(
+				"<div class='slidecontainer d-flex justify-content-center'><input type='range' min='0.0' max='1.0' value='0.5' step='0.10' class='slider' id='" +
+					val.replace('.png', '') +
+					"Toggle'></div></div>"
+			);
+	}
 
 	loadHowls();
-	$('img').click(function () {
+	$('img').click(function() {
 		var soundId = $(this).attr('id');
 		var soundToggle = soundId + 'Toggle';
 		if (howlsArray[soundId].playing()) {
@@ -37,18 +47,16 @@ function loadFiles(filesArr) {
 			$('#' + soundToggle).toggleClass('visible');
 			$(this).toggleClass('visible');
 		}
-
 	});
-	$('.slidecontainer input').on('input', function () {
+	$('.slidecontainer input').on('input', function() {
 		var soundId = $(this).attr('id');
 		soundId = soundId.replace('Toggle', '');
 		howlsArray[soundId].volume($(this).val());
 	});
-	$('#master-slider').on('input', function () {
+	$('#master-slider').on('input', function() {
 		Howler.volume($(this).val());
 	});
 	pomodoro.init();
-
 }
 
 function loadHowls() {
@@ -56,13 +64,14 @@ function loadHowls() {
 		srcStr = 'static/sounds/' + fileNames[i] + '.wav';
 		var sound = new Howl({
 			src: srcStr,
+			html5: true,
 			loop: true,
 			volume: 0.5
 		});
 		howlsArray[fileNames[i]] = sound;
 	}
 	alertSound = new Howl({
-		src: ['static/sounds/alert.wav'],
+		src: [ 'static/sounds/alert.wav' ],
 		loop: true,
 		volume: 1.0
 	});
@@ -83,62 +92,62 @@ var pomodoro = {
 	interval: null,
 	minutesDom: null,
 	secondsDom: null,
-	init: function () {
+	init: function() {
 		var self = this;
 		this.minutesDom = document.querySelector('#minutes');
 		this.secondsDom = document.querySelector('#seconds');
-		this.interval = setInterval(function () {
+		this.interval = setInterval(function() {
 			self.intervalCallback.apply(self);
 		}, 1000);
-		document.querySelector('#work').onclick = function () {
+		document.querySelector('#work').onclick = function() {
 			self.startWork.apply(self);
 		};
-		document.querySelector('#shortBreak').onclick = function () {
+		document.querySelector('#shortBreak').onclick = function() {
 			self.startShortBreak.apply(self);
 		};
-		document.querySelector('#longBreak').onclick = function () {
+		document.querySelector('#longBreak').onclick = function() {
 			self.startLongBreak.apply(self);
 		};
-		document.querySelector('#stop').onclick = function () {
+		document.querySelector('#stop').onclick = function() {
 			self.stopTimer.apply(self);
 		};
-		document.querySelector('#pause').onclick = function () {
+		document.querySelector('#pause').onclick = function() {
 			self.pauseTimer.apply(self);
 		};
-		document.querySelector('#mute').onclick = function () {
+		document.querySelector('#mute').onclick = function() {
 			self.muteSounds.apply(self);
-		}
+		};
 	},
-	resetVariables: function (mins, secs, started) {
+	resetVariables: function(mins, secs, started) {
 		this.minutes = mins;
 		this.seconds = secs;
 		this.started = started;
 		this.paused = false;
 		document.querySelector('#pause').classList.remove('visible');
 	},
-	startWork: function () {
+	startWork: function() {
 		this.stopAlertSound();
 		this.resetVariables(25, 0, true);
 	},
-	startShortBreak: function () {
+	startShortBreak: function() {
 		this.stopAlertSound();
 		this.resetVariables(5, 0, true);
 	},
-	startLongBreak: function () {
+	startLongBreak: function() {
 		this.stopAlertSound();
 		this.resetVariables(15, 0, true);
 	},
-	stopTimer: function () {
+	stopTimer: function() {
 		this.stopAlertSound();
 		this.resetVariables(25, 0, false);
 		this.updateDom();
 	},
-	stopAlertSound: function () {
+	stopAlertSound: function() {
 		if (alertSound.playing()) {
 			alertSound.stop();
 		}
 	},
-	pauseTimer: function () {
+	pauseTimer: function() {
 		if (this.started) {
 			if (this.paused) {
 				this.resumeTimer();
@@ -148,30 +157,30 @@ var pomodoro = {
 			}
 		}
 	},
-	resumeTimer: function () {
+	resumeTimer: function() {
 		this.resetVariables(this.minutes, this.seconds, true);
 	},
-	muteSounds: function () {
-		this.muted = (this.muted) ? false : true;
+	muteSounds: function() {
+		this.muted = this.muted ? false : true;
 		Howler.mute(this.muted);
 		$('#mute').toggleClass('muted');
 	},
-	toDoubleDigit: function (num) {
+	toDoubleDigit: function(num) {
 		if (num < 10) {
-			return "0" + parseInt(num, 10);
+			return '0' + parseInt(num, 10);
 		}
 		return num;
 	},
-	updateDom: function () {
+	updateDom: function() {
 		this.minutesDom.innerHTML = this.toDoubleDigit(this.minutes);
 		this.secondsDom.innerHTML = this.toDoubleDigit(this.seconds);
 		if (this.started) {
-			window.document.title = "WAVE " + this.toDoubleDigit(this.minutes) + ":" + this.toDoubleDigit(this.seconds);
+			window.document.title = 'WAVE ' + this.toDoubleDigit(this.minutes) + ':' + this.toDoubleDigit(this.seconds);
 		} else {
-			window.document.title = "WAVE";
+			window.document.title = 'WAVE';
 		}
 	},
-	intervalCallback: function () {
+	intervalCallback: function() {
 		if (!this.started) return false;
 		if (this.seconds == 0) {
 			if (this.minutes == 0) {
@@ -179,15 +188,13 @@ var pomodoro = {
 				return;
 			}
 			this.seconds = 59;
-			if (!this.paused)
-				this.minutes--;
+			if (!this.paused) this.minutes--;
 		} else {
-			if (!this.paused)
-				this.seconds--;
+			if (!this.paused) this.seconds--;
 		}
 		this.updateDom();
 	},
-	timerComplete: function () {
+	timerComplete: function() {
 		this.started = false;
 		if (!this.paused) {
 			alertSound.play();
