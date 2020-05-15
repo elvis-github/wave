@@ -1,4 +1,4 @@
-# WAVE v1.1.1 - *We got a timer now bois!*
+# WAVE v1.4.2 - *Gotta go fast!*
 
 **Basically a Noisli Clone  
 Author: Elvis Bui**  
@@ -12,11 +12,30 @@ Icons gathered from flaticon.org
 ***More development and features to come.***  
 --> https://www.elvisbui.com/wave
 
-**[20200502]**  
-*There's an issue with the footer that I know about but my eyes hurt and I want to sleep.*  
-*The website also loads slowly which I WILL look into.*
-
 ### Changelog
+**v1.4.2 - Gotta go fast!**
+>Major backend fix removing ajax call to retrieve filenames to load icons & sounds.
+
+**v1.4.1 - STOP THE ALARM**
+>Minor fix to stop the alarm sound when starting a new timer rather than having to click on the stop button.
+
+**v1.4.0 - Stop the noise, noise, NOISE**
+>Added a mute button.
+
+**v1.3.1 - Master Volume Cleanup**
+>Fixed slider container bug & moved the master volume slider into the hidden div.
+
+**v1.3.0 - MASTER SLIDER**
+>Made the volume slider sounds granularly increase volume as it slides.
+>Added a master volume slider to control global volume.
+
+**v1.2.1 - My bad**
+>Fix debug value for short break to normal value.
+
+**v1.2.0 - TIME STOP**
+>Added pause button for timer.
+>Added fancy transitions for icons.
+
 **v1.1.1 - We got a timer now bois!**
 >Minor fix to resolve issue with timer in title not resetting properly.  
 
