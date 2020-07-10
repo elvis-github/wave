@@ -105,6 +105,9 @@ var pomodoro = {
 		document.querySelector('#shortBreak').onclick = function () {
 			self.startShortBreak.apply(self);
 		};
+		document.querySelector('#mediumBreak').onclick = function () {
+			self.startMediumBreak.apply(self);
+		};
 		document.querySelector('#longBreak').onclick = function () {
 			self.startLongBreak.apply(self);
 		};
