@@ -65,6 +65,7 @@
                 <div id="buttons">
                     <i id="work" class="btn fas fa-play" /></i>
                     <i id="shortBreak" class="btn fas fa-mug-hot"></i>
+                    <i id="mediumBreak" class="fas fa-beer"></i>
                     <i id="longBreak" class="btn fas fa-coffee"></i>
                     <i id="pause" class="btn fas fa-pause"></i>
                     <i id="stop" class="btn fas fa-stop"></i>
