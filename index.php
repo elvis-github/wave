@@ -65,6 +65,7 @@
                 <div id="buttons">
                     <i id="work" class="btn fas fa-play" /></i>
                     <i id="shortBreak" class="btn fas fa-mug-hot"></i>
+                    <i id="mediumBreak" class="fas fa-beer"></i>
                     <i id="longBreak" class="btn fas fa-coffee"></i>
                     <i id="pause" class="btn fas fa-pause"></i>
                     <i id="stop" class="btn fas fa-stop"></i>
@@ -83,7 +84,7 @@
         </div>
     </div>
     <footer class="bg-dark navbar container-fluid">
-        <p class="text-light d-block mx-auto my-0 text-center"><span id="brand">WAVE v1.4.2</span><br>Created by Elvis
+        <p class="text-light d-block mx-auto my-0 text-center"><span id="brand">WAVE v1.4.3</span><br>Created by Elvis
             Bui for Sarah Smith<br>
             Images from flaticon.com | Sounds from freesounds.org</p>
     </footer>
